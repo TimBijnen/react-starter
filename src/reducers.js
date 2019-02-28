@@ -1,4 +1,9 @@
 import { combineReducers } from "redux";
 
-export default combineReducers( {
-} );
+// imported reducers
+
+const reducers = {
+    // combined reducers
+};
+
+export default combineReducers( reducers );
