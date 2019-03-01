@@ -10,24 +10,26 @@ class Login extends React.Component {
     }
 
     render() {
+        const { isAuthenticated, Authenticate } = this.props;
         return (
             <div>
                 Login
-                { this.props.isAuthenticated ? "AUTHENTICATED" : "NOT AUTHENTICATED" }
-                <Button onClick={ this.props.Authenticate }>Login</Button>
+                { isAuthenticated ? "AUTHENTICATED" : "NOT AUTHENTICATED" }
+                <Button onClick={ Authenticate }>Login</Button>
             </div>
         );
     }
 }
 
 Login.propTypes = {
-
+    isAuthenticated: PropTypes.bool.isRequired,
+    Authenticate: PropTypes.func.isRequired,
 };
 
 const mSTP = ( { app: { isAuthenticated } } ) => ( { isAuthenticated } );
 
 const mDTP = dispatch => ( {
-    Authenticate: () => dispatch( actions.AUTHENTICATE() ),
+    Authenticate: () => dispatch( actions.AUTHENTICATE( true ) ),
 } );
 
 export default connect( mSTP, mDTP )( Login );

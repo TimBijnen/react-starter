@@ -23,11 +23,12 @@ const Nav = styled.nav`
     }
 `;
 
-const Navigation = () => (
+const Navigation = ( { Logout } ) => (
     <Nav>
         <StyledLink to="/"><Logo /></StyledLink>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/login">Login</StyledLink>
+        <div onClick={ Logout }>Logout</div>
     </Nav>
 );
 

@@ -14,12 +14,12 @@ const AppWrapper = styled.div`
     height: 100vh;
 `;
 
-const App = ( { isAuthenticated, Logout } ) => (
+const App = ( { isAuthenticated, Authenticate } ) => (
     <ThemeProvider theme={ theme }>
         <AppWrapper>
             <GlobalStyle />
             <Router isAuthenticated={ isAuthenticated }>
-                <Navigation logout={ Logout } />
+                <Navigation Logout={ Authenticate } />
             </Router>
         </AppWrapper>
     </ThemeProvider>
@@ -27,7 +27,7 @@ const App = ( { isAuthenticated, Logout } ) => (
 
 App.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    Logout: PropTypes.func.isRequired,
+    Authenticate: PropTypes.func.isRequired,
 };
 
 const mSTP = ( { app: { isAuthenticated } } ) => ( {
@@ -35,7 +35,7 @@ const mSTP = ( { app: { isAuthenticated } } ) => ( {
 } );
 
 const mDTP = dispatch => ( {
-    Logout: () => dispatch( actions.AUTHENTICATE( false ) ),
+    Authenticate: () => dispatch( actions.AUTHENTICATE( false ) ),
 } );
 
 export default connect( mSTP, mDTP )( App );
