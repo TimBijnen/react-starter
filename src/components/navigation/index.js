@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../logo";
@@ -23,17 +23,21 @@ const Nav = styled.nav`
     }
 `;
 
-const Navigation = ( { Logout } ) => (
+const Navigation = ( { Authenticate, isAuthenticated } ) => (
     <Nav>
         <StyledLink to="/"><Logo /></StyledLink>
         <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/login">Login</StyledLink>
-        <div onClick={ Logout }>Logout</div>
+        { isAuthenticated ? (
+            <div onClick={ Authenticate }>Logout</div>
+        ) : (
+            <StyledLink to="/login">Login</StyledLink>
+        ) }
     </Nav>
 );
 
 Navigation.propTypes = {
-
+    isAuthenticated: PropTypes.bool.isRequired,
+    Authenticate: PropTypes.func.isRequired,
 };
 
 export default Navigation;

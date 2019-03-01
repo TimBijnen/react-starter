@@ -19,7 +19,7 @@ const App = ( { isAuthenticated, Authenticate } ) => (
         <AppWrapper>
             <GlobalStyle />
             <Router isAuthenticated={ isAuthenticated }>
-                <Navigation Logout={ Authenticate } />
+                <Navigation isAuthenticated={ isAuthenticated } Authenticate={ Authenticate } />
             </Router>
         </AppWrapper>
     </ThemeProvider>
