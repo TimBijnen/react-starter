@@ -1,5 +1,6 @@
 import "typeface-roboto";
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled, { ThemeProvider } from "styled-components";
 import Router from "src/router";
@@ -19,6 +20,10 @@ const App = ( { isAuthenticated } ) => (
         </AppWrapper>
     </ThemeProvider>
 );
+
+App.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+};
 
 const mSTP = ( { app: { isAuthenticated } } ) => ( {
     isAuthenticated,
