@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import styled, { ThemeProvider } from "styled-components";
 import Router from "src/router";
 import theme, { GlobalStyle } from "src/theme";
-
+import Navigation from "src/components/navigation";
 import { actions } from "./duck";
 
 const AppWrapper = styled.div`
@@ -16,6 +16,7 @@ const App = ( { isAuthenticated } ) => (
     <ThemeProvider theme={ theme }>
         <AppWrapper>
             <GlobalStyle />
+            <Navigation />
             <Router isAuthenticated={ isAuthenticated } />
         </AppWrapper>
     </ThemeProvider>
