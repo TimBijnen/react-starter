@@ -7,18 +7,22 @@ import Home from "src/pages/home";
 
 import RestrictedRoute from "./restricted";
 
-const Router = props => (
+const Router = ( { children, ...rest } ) => (
     <BrowserRouter>
-        <Switch>
-            <RestrictedRoute exact path="/home" { ...props } component={ p => <Home { ...p } /> } />
-            <Route exact path="/" component={ () => <div>UNRESTRICTED</div> } />
-            <Route { ...props } path="*" component={ P404 } />
-        </Switch>
+        <div>
+            { children }
+            <Switch>
+                <RestrictedRoute exact path="/home" { ...rest } component={ () => <Home { ...rest } /> } />
+                <Route exact path="/" component={ () => <div>UNRESTRICTED</div> } />
+                <Route { ...rest } path="*" component={ P404 } />
+            </Switch>
+        </div>
     </BrowserRouter>
 );
 
 Router.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 export default Router;

@@ -16,8 +16,9 @@ const App = ( { isAuthenticated } ) => (
     <ThemeProvider theme={ theme }>
         <AppWrapper>
             <GlobalStyle />
-            <Navigation />
-            <Router isAuthenticated={ isAuthenticated } />
+            <Router isAuthenticated={ isAuthenticated }>
+                <Navigation />
+            </Router>
         </AppWrapper>
     </ThemeProvider>
 );

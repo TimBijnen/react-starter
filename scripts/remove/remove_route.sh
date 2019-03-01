@@ -17,5 +17,10 @@ match='import '"$name"' from \"src\/pages'"$path"'\";'
 sed -i '' "/$match/d" $file
 
 match='<RestrictedRoute.*'"$path"'.*\/>'
-echo $match
+sed -i '' "/$match/d" $file
+
+## Remove from navigation
+file=src/components/navigation/index.js
+
+match='<StyledLink.*'"$path"'.*\/.*>'
 sed -i '' "/$match/d" $file
