@@ -1,3 +1,6 @@
 import ActionTypes from "redux-action-type-generator";
 
-export default ActionTypes( [] );
+export default ActionTypes( {
+    actions: [ "TEST" ],
+    asyncActions: [],
+} );

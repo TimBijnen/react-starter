@@ -1,3 +1,7 @@
 import types from "./types";
 
-export default {};
+const test = payload => ( { type: types.TEST, payload } );
+
+export default {
+    test,
+};
