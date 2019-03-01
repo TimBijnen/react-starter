@@ -1,22 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import P404 from "src/pages/404";
 // imported routes
+import Login from "src/pages/login";
 import Home from "src/pages/home";
+import P404 from "src/pages/404";
 
 import RestrictedRoute from "./restricted";
 
 const Router = ( { children, ...rest } ) => (
     <BrowserRouter>
-        <div>
+        <React.Fragment>
             { children }
             <Switch>
-                <RestrictedRoute exact path="/home" { ...rest } component={ () => <Home { ...rest } /> } />
-                <Route exact path="/" component={ () => <div>UNRESTRICTED</div> } />
+                <RestrictedRoute exact path="/" { ...rest } component={ () => <Home { ...rest } /> } />
+                <Route exact path="/login" { ...rest } component={ () => <Login { ...rest } /> } />
                 <Route { ...rest } path="*" component={ P404 } />
             </Switch>
-        </div>
+        </React.Fragment>
     </BrowserRouter>
 );
 

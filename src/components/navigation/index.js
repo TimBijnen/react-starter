@@ -6,13 +6,29 @@ import Logo from "../logo";
 
 const StyledLink = styled( Link )`
     display: block;
+    background-color: ${ ( { theme } ) => theme.colorPrimary };
+    height: 60px;
+    color: ${ ( { theme } ) => theme.colorSecondary };
+`;
+
+const Nav = styled.nav`
+    background-color: ${ ( { theme } ) => theme.colorPrimary };
+    height: 100vh;
+    width: 200px;
+    
+    &.top {
+        display: flex;
+        height: 60px;
+        width: 100vw;
+    }
 `;
 
 const Navigation = () => (
-    <nav>
+    <Nav>
         <StyledLink to="/"><Logo /></StyledLink>
-        <StyledLink to="/home">Home</StyledLink>
-    </nav>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/login">Login</StyledLink>
+    </Nav>
 );
 
 Navigation.propTypes = {

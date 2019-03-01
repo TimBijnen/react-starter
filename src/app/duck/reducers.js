@@ -3,8 +3,8 @@ import types from "./types";
 
 const IS_AUTHENTICATED = false;
 const isAuthenticated = ( state = IS_AUTHENTICATED, { type, payload } ) => {
-    if ( type === types.TEST ) {
-        return "TEST";
+    if ( type === types.AUTHENTICATE_SUCCESS ) {
+        return payload.isAuthenticated;
     }
     return state;
 };

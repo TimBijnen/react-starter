@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const ProtectedRoute = ( { component, isAuthenticated, ...rest } ) => {
     let Component = component;
-    if ( isAuthenticated ) {
+    if ( !isAuthenticated ) {
         Component = ( { location } ) => (
             <Redirect to={ {
                 pathname: "/login",

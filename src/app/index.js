@@ -9,7 +9,9 @@ import Navigation from "src/components/navigation";
 import { actions } from "./duck";
 
 const AppWrapper = styled.div`
-    text-align: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
 `;
 
 const App = ( { isAuthenticated } ) => (
