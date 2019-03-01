@@ -4,9 +4,7 @@ source ./scripts/index.sh to make use of the handy generator scripts
 ```
 react g page {PAGE_NAME}
 react d page {PAGE_NAME}
-
 react g component {PAGE_NAME}
-
 react d component {PAGE_NAME}
 ```
 
