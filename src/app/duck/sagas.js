@@ -2,6 +2,7 @@ import { put, takeEvery } from "redux-saga/effects";
 import types from "./types";
 
 function* authenticate( { payload } ) {
+    debugger
     yield put( { type: types.AUTHENTICATE_SUCCESS, payload: { isAuthenticated: true } } );
 }
 
