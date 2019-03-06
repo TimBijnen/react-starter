@@ -38,6 +38,12 @@ react() {
       . ./scripts/insert/insert_action.sh $name $folder
       return
     fi
+
+    if [ $type == 'test' ]; then
+      echo 'Generate' $type $name;
+      . ./scripts/insert/insert_test.sh $name $folder
+      return
+    fi
   fi
 
   ## Delete [page, component]
