@@ -109,7 +109,7 @@ Login.propTypes = {
 const mSTP = ( { app: { isAuthenticated } } ) => ( { isAuthenticated } );
 
 const mDTP = dispatch => ( {
-    Authenticate: args => dispatch( actions.AUTHENTICATE( args ) ),
+    Authenticate: args => dispatch( actions.authenticate( args ) ),
 } );
 
 export default connect( mSTP, mDTP )( Login );
