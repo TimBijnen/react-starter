@@ -1,7 +1,10 @@
 import types from "./types";
 
-const AUTHENTICATE = payload => ( { type: types.AUTHENTICATE, payload } );
+const authenticate = payload => ( { type: types.AUTHENTICATE, payload } );
+
+const init = payload => ( { type: types.INIT, payload } );
 
 export default {
-    AUTHENTICATE,
+    authenticate,
+    init,
 };

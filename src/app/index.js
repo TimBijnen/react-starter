@@ -7,6 +7,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Router from "src/router";
 import theme, { GlobalStyle } from "src/theme";
 import Navigation from "src/components/navigation";
+import { actions } from "./duck";
 
 const AppWrapper = styled.div`
     display: flex;
@@ -15,23 +16,36 @@ const AppWrapper = styled.div`
     height: 100vh;
 `;
 
-const App = ( { isAuthenticated } ) => (
-    <ThemeProvider theme={ theme.main }>
-        <AppWrapper>
-            <GlobalStyle />
-            <Router isAuthenticated={ isAuthenticated }>
-                <Navigation />
-            </Router>
-        </AppWrapper>
-    </ThemeProvider>
-);
+class App extends React.Component {
+    componentDidMount() {
+        const { Init } = this.props;
+        Init();
+    }
+
+    render() {
+        const { isAuthenticated } = this.props;
+        return (
+            <ThemeProvider theme={ theme.main }>
+                <AppWrapper>
+                    <GlobalStyle />
+                    <Router isAuthenticated={ isAuthenticated }>
+                        <Navigation />
+                    </Router>
+                </AppWrapper>
+            </ThemeProvider>
+        );
+    }
+}
 
 App.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
+    Init: PropTypes.func.isRequired,
 };
 
 const mSTP = ( { app: { isAuthenticated } } ) => ( { isAuthenticated } );
 
-const mDTP = null;
+const mDTP = dispatch => ( {
+    Init: args => dispatch( actions.init( args ) ),
+} );
 
 export default connect( mSTP, mDTP )( App );
