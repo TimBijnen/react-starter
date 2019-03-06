@@ -2,6 +2,7 @@ react() {
   action=$1
   type=$2
   name=$3
+  folder=$4
 
   if [ ! $action ]; then
     echo 'no action given'
@@ -29,6 +30,12 @@ react() {
     if [ $type == 'component' ]; then
       echo 'Generate' $type $name;
       . ./scripts/insert/insert_component.sh $name
+      return
+    fi
+
+    if [ $type == 'action' ]; then
+      echo 'Generate' $type $name $folder;
+      . ./scripts/insert/insert_action.sh $name $folder
       return
     fi
   fi

@@ -1,10 +1,10 @@
 import { takeEvery } from "redux-saga/effects";
 import types from "./types";
 
-function* test( { payload } ) {
+function* saga( { payload } ) {
     yield console.log( payload );
 }
 
 export default function* main() {
-    yield takeEvery( types.TEST, test );
+    yield takeEvery( types.SAGA, saga );
 }
