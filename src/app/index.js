@@ -7,6 +7,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Router from "src/router";
 import theme, { GlobalStyle } from "src/theme";
 import Navigation from "src/components/navigation";
+import ErrorHandler from "src/components/errorHandler";
 import { actions } from "./duck";
 
 const AppWrapper = styled.div`
@@ -28,6 +29,7 @@ class App extends React.Component {
             <ThemeProvider theme={ theme.main }>
                 <AppWrapper>
                     <GlobalStyle />
+                    <ErrorHandler />
                     <Router isAuthenticated={ isAuthenticated }>
                         <Navigation />
                     </Router>
