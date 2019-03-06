@@ -43,5 +43,12 @@
   ],
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/{index,serviceWorker}.js"
+    ]
   }
 }
