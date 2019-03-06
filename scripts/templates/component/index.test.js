@@ -1,13 +1,9 @@
 import React from "react";
-import { mount } from "enzyme";
-import store from "store";
-import ContextMenu from "./index";
+import { shallow } from "enzyme";
+import Component from ".";
 
 describe( __filename, () => {
-    let wrapper;
-    afterEach( () => wrapper.unmount() );
-
     it( "renders", () => {
-        
+        shallow( <Component /> );
     } );
 } );
