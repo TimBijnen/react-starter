@@ -21,20 +21,12 @@ react() {
   ## Generate [page, component]
   if [ $action == 'g' ]; then
     if [ $type == 'page' ]; then
-      # if [ -d "src/pages/$name" ]; then
-      #   echo 'page already exists'
-      #   return
-      # fi;
       echo 'Generate' $type $name;
       . ./scripts/insert/insert_page.sh $name
       return
     fi
 
     if [ $type == 'component' ]; then
-      # if [ -d "src/pages/$name" ]; then
-      #   echo 'component already exists'
-      #   return
-      # fi;
       echo 'Generate' $type $name;
       . ./scripts/insert/insert_component.sh $name
       return
@@ -44,20 +36,12 @@ react() {
   ## Delete [page, component]
   if [ $action == 'd' ]; then
     if [ $type == 'page' ]; then
-      # if [ ! -d "src/pages/$name" ]; then
-      #   echo 'page does not exist'
-      #   return
-      # fi;
       echo 'Delete' $type $name;
       . ./scripts/remove/remove_page.sh $name
       return
     fi
 
     if [ $type == 'component' ]; then
-      # if [ -d "src/pages/$name" ]; then
-      #   echo 'component does not exists'
-      #   return
-      # fi;
       echo 'Delete' $type $name;
       . ./scripts/remove/remove_component.sh $name
       return
