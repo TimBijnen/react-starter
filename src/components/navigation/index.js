@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../logo";
@@ -8,36 +7,39 @@ const StyledLink = styled( Link )`
     display: block;
     background-color: ${ ( { theme } ) => theme.colorPrimary };
     height: 60px;
-    color: ${ ( { theme } ) => theme.colorSecondary };
-`;
+    padding: 0 8px;
+    line-height: 60px;
+    text-decoration: none;
+    color: white;
 
-const Nav = styled.nav`
-    background-color: ${ ( { theme } ) => theme.colorPrimary };
-    height: 100vh;
-    width: 200px;
-    
-    &.top {
-        display: flex;
-        height: 60px;
-        width: 100vw;
+    &:hover {
+        background-color: ${ ( { theme } ) => theme.colorSecondary };
     }
 `;
 
-const Navigation = ( { Authenticate, isAuthenticated } ) => (
-    <Nav>
-        <StyledLink to="/"><Logo /></StyledLink>
-        <StyledLink to="/">Home</StyledLink>
-        { isAuthenticated ? (
-            <div onClick={ Authenticate }>Logout</div>
-        ) : (
-            <StyledLink to="/login">Login</StyledLink>
-        ) }
-    </Nav>
-);
+const Wrapper = styled.div`
+    background-color: ${ ( { theme } ) => theme.colorPrimary };
+    height: ${ ( { theme } ) => theme.navigationHeight };
+    min-width: ${ ( { theme } ) => theme.navigationWidth };
+    width: ${ ( { theme } ) => theme.navigationWidth };
+    display: flex;
+    flex-direction: ${ ( { theme } ) => theme.navigationFlexDirection };
 
-Navigation.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
-    Authenticate: PropTypes.func.isRequired,
-};
+    nav {
+        height: 100%;
+        width: 100%;
+        display: ${ ( { theme } ) => theme.navigationNavDisplay };
+    }
+`;
+
+const Navigation = () => (
+    <Wrapper>
+        <nav>
+            <StyledLink to="/"><Logo /></StyledLink>
+            <StyledLink to="/">Home</StyledLink>
+        </nav>
+        <StyledLink to="/login?logout=true">Logout</StyledLink>
+    </Wrapper>
+);
 
 export default Navigation;

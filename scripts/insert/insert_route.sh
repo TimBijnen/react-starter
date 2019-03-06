@@ -27,7 +27,7 @@ sed -i '' "s/$match/$match$insert/" $file
 
 match='<Switch>'
 insert='\
-                <RestrictedRoute exact path=\"'"$path"'\" { ...rest } component={ () => <'"$name"' { ...rest } \/> } \/>'
+                <RestrictedRoute exact path=\"'"$path"'\" { ...rest } component={ props => <'"$name"' { ...rest } { ...props } \/> } \/>'
 
 sed -i '' "s/$match/$match$insert/" $file
 
@@ -37,5 +37,5 @@ file=src/components/navigation/index.js
 
 match='<\/nav>'
 insert='    <StyledLink to=\"'"$path"'\">'"$name"'<\/StyledLink>\
-    ';
+        ';
 sed -i '' "s/$match/$insert$match/" $file

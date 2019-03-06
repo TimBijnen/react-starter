@@ -9,6 +9,7 @@ const ProtectedRoute = ( { component, isAuthenticated, ...rest } ) => {
             <Redirect to={ {
                 pathname: "/login",
                 state: { from: location },
+                search: `?redirect=${ location.pathname }`,
             } }
             />
         );
@@ -19,7 +20,7 @@ const ProtectedRoute = ( { component, isAuthenticated, ...rest } ) => {
 ProtectedRoute.propTypes = {
     component: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
-    location: PropTypes.shape(),
+    location: PropTypes.shape().isRequired,
 };
 
 export default ProtectedRoute;

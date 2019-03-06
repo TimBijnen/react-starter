@@ -13,8 +13,8 @@ const Router = ( { children, ...rest } ) => (
         <React.Fragment>
             { children }
             <Switch>
-                <RestrictedRoute exact path="/" { ...rest } component={ () => <Home { ...rest } /> } />
-                <Route exact path="/login" { ...rest } component={ () => <Login { ...rest } /> } />
+                <RestrictedRoute exact path="/" { ...rest } component={ props => <Home { ...rest } { ...props } /> } />
+                <Route exact path="/login" { ...rest } component={ props => <Login { ...rest } { ...props } /> } />
                 <Route { ...rest } path="*" component={ P404 } />
             </Switch>
         </React.Fragment>
