@@ -24,22 +24,24 @@ class Login extends React.Component {
 
     static getDerivedStateFromProps( props ) {
         const search = queryString.parse( props.location.search );
-        return {
-            ...search,
-        };
+        return { search };
     }
 
     componentDidMount() {
         const { search } = this.state;
         if ( search.logout ) {
-            this.performLogout();
+            this.authenticate( false );
+        } else if ( search.token ) {
+            this.authenticate( search.token );
         }
     }
 
     componentDidUpdate() {
         const { search } = this.state;
         if ( search.logout ) {
-            this.performLogout();
+            this.authenticate( false );
+        } else if ( search.token ) {
+            this.authenticate( search.token );
         }
     }
 
@@ -47,9 +49,9 @@ class Login extends React.Component {
         console.log( response );
     }
 
-    performLogout() {
+    authenticate( token ) {
         const { Authenticate, history } = this.props;
-        Authenticate( false );
+        Authenticate( token );
         history.push( { search: "" } );
     }
 
