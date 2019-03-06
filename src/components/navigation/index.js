@@ -37,6 +37,7 @@ const Navigation = () => (
         <nav>
             <StyledLink to="/"><Logo /></StyledLink>
             <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/home">Home</StyledLink>
         </nav>
         <StyledLink to="/login?logout=true">Logout</StyledLink>
     </Wrapper>
