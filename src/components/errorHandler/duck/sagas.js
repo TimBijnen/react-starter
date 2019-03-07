@@ -10,22 +10,17 @@ import actions from "./actions";
 import types from "./types";
 
 export const errorWatcher = () => eventChannel( ( emitter ) => {
-    function errorHandler( error ) {
-        emitter( { error } );
-        return error;
-    }
-
-    axios.interceptors.response.use(
-        response => response,
-        errorHandler,
-    );
-
-    return () => { };
+    const handler = key => ( value ) => {
+        emitter( { [ key ]: value } );
+        return value;
+    };
+    axios.interceptors.response.use( handler( "response" ), handler( "error" ) );
+    /* istanbul ignore next */
+    return () => {};
 }, buffers.sliding( 2 ) );
 
 export function* init() {
     const channel = yield call( errorWatcher );
-
     while ( true ) {
         const { error } = yield take( channel );
         if ( error ) {
