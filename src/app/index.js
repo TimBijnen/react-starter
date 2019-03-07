@@ -26,7 +26,7 @@ class App extends React.Component {
     render() {
         const { isAuthenticated } = this.props;
         return (
-            <ThemeProvider theme={ theme.main }>
+            <ThemeProvider theme={ theme.primary }>
                 <AppWrapper>
                     <GlobalStyle />
                     <ErrorHandler />

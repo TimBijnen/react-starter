@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import axios from "axios";
 import types from "./types";
 
-const TOKEN = localStorage.getItem( "token" );
+const TOKEN = localStorage.getItem( "token" ) || false;
 const isAuthenticated = ( state = TOKEN, { type, payload } ) => {
     if ( type === types.AUTHENTICATE_SUCCESS ) {
         axios.defaults.headers.common.Authorization = `Bearer ${ payload.token }`;

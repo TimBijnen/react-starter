@@ -11,7 +11,7 @@ import {
 } from "./navigation";
 
 export default {
-    main: {
+    primary: {
         appFlexDirection: "row",
         ...colorsMain,
         ...navigationMain,
