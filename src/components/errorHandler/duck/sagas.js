@@ -6,31 +6,30 @@ import {
     call,
     take,
 } from "redux-saga/effects";
+import actions from "./actions";
 import types from "./types";
 
-function uploadChannel() {
-    return eventChannel( ( emitter ) => {
-        function errorHandler( error ) {
-            emitter( { error } );
-            return error;
-        }
+export const errorWatcher = () => eventChannel( ( emitter ) => {
+    function errorHandler( error ) {
+        emitter( { error } );
+        return error;
+    }
 
-        axios.interceptors.response.use(
-            response => response,
-            errorHandler,
-        );
+    axios.interceptors.response.use(
+        response => response,
+        errorHandler,
+    );
 
-        return () => { };
-    }, buffers.sliding( 2 ) );
-}
+    return () => { };
+}, buffers.sliding( 2 ) );
 
-function* init() {
-    const channel = yield call( uploadChannel );
+export function* init() {
+    const channel = yield call( errorWatcher );
 
     while ( true ) {
         const { error } = yield take( channel );
         if ( error ) {
-            yield put( { type: types.ERROR, payload: error } );
+            yield put( actions.createError( error ) );
         }
     }
 }
