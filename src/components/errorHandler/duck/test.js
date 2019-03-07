@@ -16,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore( ( state = {} ) => state, undefined, applyMiddleware( sagaMiddleware ) );
 
-describe( "team reducer", () => {
+describe( "Duck tests", () => {
     it( "should return the initial state", () => {
         expect( reducer( undefined, {} ) ).toEqual( { errors: [] } );
     } );
