@@ -28,31 +28,27 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        const { search } = this.state;
-        if ( search.logout ) {
-            this.authenticate( false );
-        } else if ( search.token ) {
-            this.authenticate( search.token );
-        }
+        this.authenticateFromQuerystring();
     }
 
     componentDidUpdate() {
+        this.authenticateFromQuerystring();
+    }
+
+    authenticateFromQuerystring() {
         const { search } = this.state;
-        if ( search.logout ) {
-            this.authenticate( false );
-        } else if ( search.token ) {
-            this.authenticate( search.token );
+        const { logout } = search;
+        let { token } = search;
+
+        if ( logout ) {
+            token = false;
         }
-    }
 
-    responseGoogle = ( response ) => {
-        console.log( response );
-    }
-
-    authenticate( token ) {
-        const { Authenticate, history } = this.props;
-        Authenticate( token );
-        history.push( { search: "" } );
+        if ( logout || token ) {
+            const { Authenticate, history } = this.props;
+            history.push( { search: "" } );
+            Authenticate( token );
+        }
     }
 
     render() {
@@ -69,8 +65,8 @@ class Login extends React.Component {
                     disabled={ !process.env.REACT_APP_GCLIENT_ID }
                     clientId={ process.env.REACT_APP_GCLIENT_ID }
                     buttonText={ process.env.REACT_APP_GCLIENT_ID ? "Login" : "No client id" }
-                    onSuccess={ this.responseGoogle }
-                    onFailure={ this.responseGoogle }
+                    onSuccess={ () => {} }
+                    onFailure={ () => {} }
                 />
                 <hr />
                 <Form>
