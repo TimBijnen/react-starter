@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const ProtectedRoute = ( { component, isAuthenticated, ...rest } ) => {
+const RestrictedRoute = ( { component, isAuthenticated, ...rest } ) => {
     let Component = component;
     if ( !isAuthenticated ) {
         Component = ( { location } ) => (
@@ -17,10 +17,15 @@ const ProtectedRoute = ( { component, isAuthenticated, ...rest } ) => {
     return <Route { ...rest } render={ Component } />;
 };
 
-ProtectedRoute.propTypes = {
+RestrictedRoute.propTypes = {
     component: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    location: PropTypes.shape().isRequired,
+    isAuthenticated: PropTypes.bool,
+    location: PropTypes.shape(),
 };
 
-export default ProtectedRoute;
+RestrictedRoute.defaultProps = {
+    isAuthenticated: false,
+    location: {},
+};
+
+export default RestrictedRoute;

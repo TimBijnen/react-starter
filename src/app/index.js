@@ -1,5 +1,7 @@
 import "typeface-roboto";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-notifications/lib/notifications.css";
+
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -26,7 +28,7 @@ class App extends React.Component {
     render() {
         const { isAuthenticated } = this.props;
         return (
-            <ThemeProvider theme={ theme.main }>
+            <ThemeProvider theme={ theme.primary }>
                 <AppWrapper>
                     <GlobalStyle />
                     <ErrorHandler />

@@ -1,6 +1,3 @@
-import ActionTypes from "redux-action-type-generator";
+const types = {};
 
-export default ActionTypes( {
-    actions: [ "TEST" ],
-    asyncActions: [],
-} );
+export default types;

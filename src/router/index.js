@@ -22,8 +22,13 @@ const Router = ( { children, ...rest } ) => (
 );
 
 Router.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
+    isAuthenticated: PropTypes.bool,
+};
+
+Router.defaultProps = {
+    isAuthenticated: false,
+    children: null,
 };
 
 export default Router;
