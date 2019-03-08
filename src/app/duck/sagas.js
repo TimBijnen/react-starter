@@ -1,7 +1,7 @@
 import { put, takeEvery } from "redux-saga/effects";
+import axios from "axios";
 import types from "./types";
 import actions from "./actions";
-import axios from "axios";
 
 function* authenticate( { payload } ) {
     yield put( { type: types.AUTHENTICATE_SUCCESS, payload: { isAuthenticated: !!payload } } );
