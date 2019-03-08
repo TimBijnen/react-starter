@@ -13,7 +13,7 @@ import {
     Input,
 } from "reactstrap";
 
-import { actions } from "src/app/duck";
+import { actions } from "../../app/duck";
 
 const Wrapper = styled.div`
     width: 100%;

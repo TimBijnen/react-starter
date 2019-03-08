@@ -4,10 +4,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled, { ThemeProvider } from "styled-components";
-import Router from "src/router";
-import theme, { GlobalStyle } from "src/theme";
-import Navigation from "src/components/navigation";
-import ErrorHandler from "src/components/errorHandler";
+import Router from "../router";
+import theme, { GlobalStyle } from "../theme";
+import Navigation from "../components/navigation";
+import ErrorHandler from "../components/errorHandler";
 import { actions } from "./duck";
 
 const AppWrapper = styled.div`

@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // imported routes
-import Login from "src/pages/login";
-import Home from "src/pages/home";
-import P404 from "src/pages/404";
+import Login from "../pages/login";
+import Home from "../pages/home";
+import P404 from "../pages/404";
 
 import RestrictedRoute from "./restricted";
 

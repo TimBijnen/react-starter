@@ -1,9 +1,9 @@
 import { all } from "redux-saga/effects";
 
 // imported sagas
-import { sagas as home } from "src/pages/home/duck";
-import { sagas as app } from "src/app/duck";
-import { sagas as error } from "src/components/errorHandler/duck";
+import { sagas as home } from "./pages/home/duck";
+import { sagas as app } from "./app/duck";
+import { sagas as error } from "./components/errorHandler/duck";
 
 const sagas = [
     // combined sagas
